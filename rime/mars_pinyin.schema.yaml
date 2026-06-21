@@ -1,0 +1,87 @@
+# Rime schema
+# encoding: utf-8
+
+schema:
+  schema_id: mars_pinyin
+  name: "火星文拼音 - 两段式"
+  version: "4.2.0"
+  author:
+    - "marslanguage"
+  description: |
+    先选择正常汉字消除同音歧义，再从多条火星文变体中选择上屏。
+
+dependencies:
+  - luna_pinyin
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: ["中文", "西文"]
+  - name: full_shape
+    states: ["半角", "全角"]
+  - name: ascii_punct
+    states: ["。，", "．，"]
+  - name: mars_two_stage
+    reset: 1
+    states: ["直接上屏", "两段转换"]
+  - name: mars_cross_script
+    reset: 1
+    states: ["纯汉字", "跨文字"]
+  - name: mars_symbols
+    reset: 1
+    states: ["无装饰", "符号装饰"]
+
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - lua_processor@*mars_stage2_processor_v42
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - lua_translator@*mars_stage2_translator_v42
+    - script_translator
+  filters:
+    - uniquifier
+
+menu:
+  page_size: 7
+
+speller:
+  alphabet: zyxwvutsrqponmlkjihgfedcba
+  delimiter: " '"
+  algebra:
+    - abbrev/^([a-z]).+$/$1/
+    - derive/^([nl])ue$/$1ve/
+    - derive/^([jqxy])u$/$1v/
+    - derive/^([aoe])([ioun])/$1'$2/
+
+translator:
+  dictionary: luna_pinyin
+  prism: mars_pinyin
+  spelling_hints: 8
+  preedit_format:
+    - xform/([nl])v/$1ü/
+    - xform/([jqxy])v/$1u/
+
+punctuator:
+  import_preset: default
+
+key_binder:
+  import_preset: default
+
+recognizer:
+  import_preset: default
+  patterns:
+    mars_stage2: "^~m$"

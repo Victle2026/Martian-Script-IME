@@ -1,0 +1,11 @@
+# Local editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Rime and script backups
+*.bak.*
+*.userdb/
+build/

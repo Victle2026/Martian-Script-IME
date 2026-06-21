@@ -1,0 +1,153 @@
+# encoding: utf-8
+# 火星文输入法 - 小狼毫 Weasel 自定义皮肤
+#
+# 安装方法：把本文件复制到 %APPDATA%\Rime\，然后右键小狼毫托盘图标 → 重新部署。
+#
+# 颜色格式说明：Weasel 使用 Windows COLORREF，十六进制为 0xBBGGRR（注意是 BGR 顺序，不是 RGB）。
+# 例如纯红 #FF0000 写作 0x0000FF，纯蓝 #0000FF 写作 0xFF0000。
+#
+# 切换配色：修改 style/color_scheme 的值为下面任意一个 scheme id。
+# 可用皮肤：mars_jirai | mars_sweet_cool | mars_y2k | mars_pixel | mars_emo_kawaii | mars_millennium
+
+patch:
+
+  # ─────────────────────────────────────────────────────────────────
+  # 全局布局与字体
+  # ─────────────────────────────────────────────────────────────────
+  style:
+    color_scheme: mars_y2k          # 默认皮肤，修改此处切换
+    color_scheme_dark: mars_millennium  # 系统深色模式时使用
+
+    font_face: "Microsoft YaHei"      # 候选词字体
+    label_font_face: "Microsoft YaHei"
+    comment_font_face: "Microsoft YaHei"
+    font_point: 14
+    label_font_point: 12
+    comment_font_point: 12
+
+    horizontal: false                 # 竖向候选栏，六个候选不会挤出屏幕
+    inline_preedit: true              # 输入拼音时嵌入光标，不弹独立框
+    corner_radius: 8                  # 圆角半径（像素）
+    border_height: 2
+    border_width: 2
+    candidate_spacing: 12             # 候选词间距
+    hilite_spacing: 5                 # 高亮块左右留白
+    hilite_padding: 6                 # 高亮块上下留白
+    margin_x: 8
+    margin_y: 6
+    shadow_radius: 6                  # 阴影（部分版本支持）
+    shadow_offset_x: 2
+    shadow_offset_y: 2
+
+  # ─────────────────────────────────────────────────────────────────
+  # 皮肤定义
+  # ─────────────────────────────────────────────────────────────────
+  preset_color_schemes:
+
+    # ── 地雷系 Jirai ──────────────────────────────────────────────
+    # 黑底 + 粉白字 + 深玫红高亮，洋娃娃暗系风格
+    mars_jirai:
+      name: "地雷系 Jirai"
+      author: "marslanguage"
+      back_color: 0x100808            # 近黑暗底
+      border_color: 0x8c3060          # 玫红边框
+      text_color: 0xd4b8c8            # 浅粉白候选文字
+      hilited_text_color: 0xfcf0f8    # 拼音串高亮文字
+      hilited_back_color: 0x500830    # 拼音串高亮背景（深暗红）
+      hilited_candidate_text_color: 0xffffff
+      hilited_candidate_back_color: 0x8c1850  # 选中候选背景（深玫红）
+      hilited_candidate_label_color: 0xffd4e8
+      hilited_comment_text_color: 0xffb8d0
+      label_color: 0x805068           # 候选序号颜色
+      comment_text_color: 0x906878    # 注释/注音颜色
+      shadow_color: 0x80200010        # 半透明阴影
+
+    # ── 甜酷 Sweet Cool ──────────────────────────────────────────
+    # 极黑底 + 霓虹热粉，甜美与叛逆并存
+    mars_sweet_cool:
+      name: "甜酷 Sweet Cool"
+      author: "marslanguage"
+      back_color: 0x0d0d0d
+      border_color: 0x9314ff          # 亮洋红边框（BGR: #FF1493）
+      text_color: 0xb469ff            # 热粉文字（BGR: #FF69B4）
+      hilited_text_color: 0xffffff
+      hilited_back_color: 0x6e00cc    # 深品红（BGR: #CC006E）
+      hilited_candidate_text_color: 0xffffff
+      hilited_candidate_back_color: 0x8800cc  # 亮品红（BGR: #CC0088）
+      hilited_candidate_label_color: 0xffccee
+      hilited_comment_text_color: 0xffaadd
+      label_color: 0x7033aa
+      comment_text_color: 0x8844bb
+      shadow_color: 0xa0000000
+
+    # ── Y2K ──────────────────────────────────────────────────────
+    # 银白浅底 + 电蓝高亮，千禧年全息感
+    mars_y2k:
+      name: "Y2K 千禧"
+      author: "marslanguage"
+      back_color: 0xf0ece8            # 浅银白底
+      border_color: 0xdd8833          # 蓝金边框（BGR: #3388DD）
+      text_color: 0x402010            # 深蓝黑文字
+      hilited_text_color: 0xf8f8ff
+      hilited_back_color: 0xcc5500    # 电蓝（BGR: #0055CC）
+      hilited_candidate_text_color: 0xffffff
+      hilited_candidate_back_color: 0xff6600  # 亮蓝（BGR: #0066FF）
+      hilited_candidate_label_color: 0xffffff
+      hilited_comment_text_color: 0xddeeff
+      label_color: 0x998866
+      comment_text_color: 0xaa9977
+      shadow_color: 0x40336699
+
+    # ── 像素风 Pixel ──────────────────────────────────────────────
+    # 终端绿，复古 8-bit CRT 风格；建议配合等宽字体
+    mars_pixel:
+      name: "像素风 Pixel"
+      author: "marslanguage"
+      back_color: 0x081208            # 近黑绿底
+      border_color: 0x228833          # 暗绿边框
+      text_color: 0x44ff66            # 荧光绿（BGR: #66FF44）
+      hilited_text_color: 0x081208
+      hilited_back_color: 0x33ee55    # 高亮绿（BGR: #55EE33）
+      hilited_candidate_text_color: 0x000a00
+      hilited_candidate_back_color: 0x44ff66  # 选中亮绿（BGR: #66FF44）
+      hilited_candidate_label_color: 0x000a00
+      hilited_comment_text_color: 0x003300
+      label_color: 0x228844
+      comment_text_color: 0x1a7733
+      shadow_color: 0x8000ff00
+
+    # ── Emo Kawaii ────────────────────────────────────────────────
+    # 极深紫黑底 + 薰衣草 + 粉紫，暗系可爱风
+    mars_emo_kawaii:
+      name: "Emo Kawaii"
+      author: "marslanguage"
+      back_color: 0x140a0d            # 极深紫黑
+      border_color: 0xaa4477          # 中紫边框
+      text_color: 0xdca4c8            # 淡薰衣草粉
+      hilited_text_color: 0xfff0ff
+      hilited_back_color: 0x8a2d5e    # 深紫高亮
+      hilited_candidate_text_color: 0xfff8ff
+      hilited_candidate_back_color: 0x6e2266  # 深洋红选中（BGR: #66226E）
+      hilited_candidate_label_color: 0xffccee
+      hilited_comment_text_color: 0xffaad8
+      label_color: 0x7a4466
+      comment_text_color: 0x8855aa    # BGR: #AA5588
+      shadow_color: 0xa0100020
+
+    # ── 千禧动漫 Millennium ───────────────────────────────────────
+    # 浅紫白底 + 动漫软糖配色，少女向
+    mars_millennium:
+      name: "千禧动漫"
+      author: "marslanguage"
+      back_color: 0xf8e8f0            # 浅淡紫白底
+      border_color: 0xcc88aa          # 粉紫边框
+      text_color: 0x602040            # 深莓紫文字
+      hilited_text_color: 0xffffff
+      hilited_back_color: 0xbb44aa    # 亮紫（BGR: #AA44BB）
+      hilited_candidate_text_color: 0xffffff
+      hilited_candidate_back_color: 0xaa3399  # 紫红选中（BGR: #9933AA）
+      hilited_candidate_label_color: 0xffeeff
+      hilited_comment_text_color: 0xffe8ff
+      label_color: 0xaa66bb
+      comment_text_color: 0xbb88cc
+      shadow_color: 0x40cc88aa
