@@ -62,19 +62,87 @@ powershell -ExecutionPolicy Bypass -File .\install_weasel.ps1
 | `mars_emo_kawaii` | Emo Kawaii | 深紫黑、薰衣草粉 |
 | `mars_millennium` | 千禧动漫 | 浅紫白、粉紫 |
 
+“皮肤 ID”是换肤命令使用的参数，不是需要修改的文件名。例如像素风的 ID 是 `mars_pixel`。
+
+### 参数是什么意思
+
+- `-Skin`：Windows 或应用处于浅色模式时使用的皮肤。
+- `-DarkSkin`：Windows 或应用处于深色模式时使用的皮肤。
+- 只填写 `-Skin`：浅色和深色模式都使用同一皮肤。
+- `-Layout Vertical`：候选竖排，项目默认值，推荐使用。
+- `-Layout Horizontal`：候选横排，长句可能显示不全。
+
+### 第一步：打开正确的 PowerShell 目录
+
+1. 打开从 GitHub 下载并解压后的项目文件夹。
+2. 确认当前文件夹能看到 `set_skin.ps1`、`install_weasel.ps1` 和 `rime` 文件夹。
+3. 点击文件资源管理器顶部的地址栏，输入 `powershell`，然后按回车。
+4. PowerShell 打开后，提示符中的路径应当是项目文件夹，而不是 `C:\Windows\System32`。
+
+也可以手动进入项目目录。请把下面的路径换成自己的实际解压位置：
+
+```powershell
+Set-Location "C:\Users\你的用户名\Downloads\Martian-Script-IME-main"
+```
+
+可以用下面的命令确认脚本就在当前目录：
+
+```powershell
+Get-ChildItem .\set_skin.ps1
+```
+
+### 第二步：运行换肤命令
+
 将浅色和深色模式都切换为像素风：
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\set_skin.ps1 -Skin mars_pixel
 ```
 
-分别设置浅色和深色皮肤：
+浅色模式使用 Y2K，深色模式使用 Emo Kawaii：
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\set_skin.ps1 -Skin mars_y2k -DarkSkin mars_emo_kawaii
 ```
 
-脚本默认保持竖向候选列表。修改皮肤后需要再次点击小狼毫的“重新部署”。
+切换为甜酷皮肤，并明确保持候选竖排：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\set_skin.ps1 -Skin mars_sweet_cool -Layout Vertical
+```
+
+恢复项目默认搭配（浅色 Y2K、深色千禧动漫）：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\set_skin.ps1 -Skin mars_y2k -DarkSkin mars_millennium
+```
+
+成功后会看到类似输出：
+
+```text
+Skin updated: light=mars_y2k, dark=mars_emo_kawaii, layout=Vertical
+Right-click the Weasel tray icon and choose Redeploy.
+```
+
+### 第三步：让皮肤生效
+
+1. 找到 Windows 任务栏右下角的小狼毫图标；图标被折叠时先点击 `^`。
+2. 右键小狼毫图标。
+3. 点击“重新部署”。
+4. 等待“维护中”提示消失，再打开任意文本框测试输入法。
+
+换肤不需要重新安装输入法。每次修改皮肤后，只需重新部署一次。
+
+### 换肤报错处理
+
+如果提示“找不到 `set_skin.ps1`”，说明 PowerShell 打开的目录不正确。先执行：
+
+```powershell
+Set-Location "你的项目解压路径"
+Get-ChildItem .\set_skin.ps1
+```
+
+确认第二条命令能显示文件后，再运行换肤命令。如果命令运行成功但外观没有变化，通常是还没有重新部署，或者 Windows 当前启用了另一种明暗模式。
 
 ## 更新与卸载
 
